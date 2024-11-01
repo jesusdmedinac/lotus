@@ -137,6 +137,12 @@ export default function Home() {
     launchSignInAnonymously();
   }, [auth, analytics]);
 
+  const handleShareExperience = () => {
+    if (!analytics) return;
+    logEvent(analytics, "share_experience");
+    window.open("https://calendly.com/jesusdmedinac/lotus-internal-testing")
+  }
+
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
@@ -189,7 +195,20 @@ export default function Home() {
         </Box>
       </Modal>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
+      <footer className="row-start-3 w-full">
+        <Button onClick={handleShareExperience} className="bg-white z-50 rounded-full px-4 py-2 text-lg text-black">
+            <div className="flex items-center justify-center">
+              <Image
+                src="/lotus-black.svg"
+                alt="Logo Lotus"
+                width={32}
+                height={32}
+                />
+              <p className="ml-2">
+                Compartir mi experiencia
+              </p>
+            </div>
+          </Button>
       </footer>
     </div>
   );
