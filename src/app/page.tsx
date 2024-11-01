@@ -50,10 +50,14 @@ export default function Home() {
     async function loadGeneratedContent() {
       try {
         const responseData = await fetchGeneratedContent(currentTranscript);
-        setSuggestedContentList((prevList) => [
-          ...prevList, 
-          responseData.candidates[0].content.parts[0].text
-        ]);
+        if (responseData && responseData.candidates && responseData.candidates.length > 0) {
+          setSuggestedContentList((prevList) => [
+            ...prevList, 
+            responseData.candidates[0].content.parts[0].text
+          ]);
+        } else {
+          console.log("No se encontraron candidatos en la respuesta.");
+        }
       } catch (error) {
         console.log("Error fetching generated content:", error);
       }
