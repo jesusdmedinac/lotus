@@ -6,9 +6,9 @@ import { useState, useRef, useEffect } from "react";
 import AccordionSuggestions from "./components/accordion.suggestions";
 import YouTubeComponent from "./components/youtube";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import "./local.css";
 import { initializeApp } from "firebase/app";
 import { Analytics, getAnalytics, logEvent } from "firebase/analytics";
+import { getAuth, Auth, signInAnonymously } from "firebase/auth";
 import { fetchGeneratedContent } from "./services/geminiService";
 import { fetchVideoTranscript } from "./services/videoService";
 
@@ -32,6 +32,7 @@ export default function Home() {
   const [suggestedContentList, setSuggestedContentList] = useState<string[]>([]);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [analytics, setAnalytics] = useState<Analytics | null>(null);
+  const [auth, setAuth] = useState<Auth | null>(null);
 
   useEffect(() => {
     console.log(counter);
@@ -107,12 +108,34 @@ export default function Home() {
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);      
+      const auth = getAuth(app);
       setAnalytics(analytics);
       logEvent(analytics, "analytics_loaded");
       console.log("analytics loaded"); 
+      setAuth(auth);
     }
     loadfirebaseApp();
   }, []);
+
+  useEffect(() => {
+    if (!auth) return;
+    if (!analytics) return;
+    async function launchSignInAnonymously() {
+      if (!auth) return;
+      signInAnonymously(auth)
+      .then(() => {
+        console.log("signed in");
+        if (!analytics) return;
+        logEvent(analytics, "user_signed_in");
+      })
+      .catch((error) => {
+        console.log(error);
+        if (!analytics) return;
+        logEvent(analytics, "user_signed_in_error");
+      });
+    }
+    launchSignInAnonymously();
+  }, [auth, analytics]);
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
