@@ -124,7 +124,7 @@ export default function Home() {
           handlePause={handlePause}
            />
       </div>
-      <Button onClick={handleOpen} className="bg-primary z-50 right-12 top-12 absolute rounded-full px-4 py-2 text-lg text-on-primary">
+      <Button onClick={handleOpen} className="bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% z-50 right-12 top-12 absolute rounded-full px-4 py-2 text-lg text-white">
         <div className="flex items-center justify-center">
           <Image
             src="/lotus-on-primary.svg"
@@ -144,7 +144,7 @@ export default function Home() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Button onClick={handleClose} className="bg-primary z-50 left-12 top-12 absolute rounded-full px-4 py-2 text-lg text-on-primary">
+          <Button onClick={handleClose} className="bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% z-50 left-12 top-12 absolute rounded-full px-4 py-2 text-lg text-white">
             <div className="flex items-center justify-center">
               <ArrowBackIosNewIcon />
               <Image
