@@ -55,7 +55,7 @@ export default function Home() {
           responseData.candidates[0].content.parts[0].text
         ]);
       } catch (error) {
-        console.error("Error fetching generated content:", error);
+        console.log("Error fetching generated content:", error);
       }
     }
     loadGeneratedContent();
