@@ -4,14 +4,27 @@ import { Accordion, AccordionDetails, AccordionSummary, Typography } from "@mui/
 import Markdown from "react-markdown";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import SliderSuggestions from "./slider.suggestions";
+import { Analytics, logEvent } from "firebase/analytics";
+import { useState } from "react";
 
 export default function AccordionSuggestions({
   currentTranscript,
-  suggestedContentList
+  suggestedContentList,
+  analytics
 }: {
   currentTranscript: string,
-  suggestedContentList: string[]
+  suggestedContentList: string[],
+  analytics: Analytics | null
 }) {
+  const [expanded, setExpanded] = useState(false);
+
+  const onSuggestionsClick = () => {
+    setExpanded((prev) => !prev);
+    if (!analytics) return;
+    logEvent(analytics, "contenido_adicional", {
+      expanded
+    });
+  }
   return (
     <div className="absolute top-52">
       <Typography>
@@ -25,6 +38,7 @@ export default function AccordionSuggestions({
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1-content"
           id="panel1-header"
+          onClick={onSuggestionsClick}
         >
           Contenido adicional
         </AccordionSummary>

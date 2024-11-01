@@ -61,9 +61,15 @@ export default function Home() {
     loadGeneratedContent();
   }, [currentTranscript]);
 
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () => {
+    setOpen(true);
+    if (!analytics) return;
+    logEvent(analytics, "descubre_mas_en_lotus");
+  }
   const handleClose = () => {
     setOpen(false);
+    if (!analytics) return;
+    logEvent(analytics, "seguir_viendo_el_video");
   };
 
   const youtubeURLId = "SL6qw9-9NEQ";
@@ -151,6 +157,7 @@ export default function Home() {
           <AccordionSuggestions 
             currentTranscript={currentTranscript}
             suggestedContentList={suggestedContentList}
+            analytics={analytics}
           />
         </Box>
       </Modal>
