@@ -114,10 +114,10 @@ export default function Home() {
           handlePause={handlePause}
            />
       </div>
-      <Button onClick={handleOpen} className="ai-button-background z-50 right-12 top-12 absolute rounded-full px-4 py-2 text-lg text-white">
+      <Button onClick={handleOpen} className="bg-primary z-50 right-12 top-12 absolute rounded-full px-4 py-2 text-lg text-on-primary">
         <div className="flex items-center justify-center">
           <Image
-            src="/lotus.svg"
+            src="/lotus-on-primary.svg"
             alt="Logo Lotus"
             width={32}
             height={32}
@@ -134,7 +134,7 @@ export default function Home() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Button onClick={handleClose} className="ai-button-background z-50 left-12 top-12 absolute rounded-full px-4 py-2 text-lg text-white">
+          <Button onClick={handleClose} className="bg-primary z-50 left-12 top-12 absolute rounded-full px-4 py-2 text-lg text-on-primary">
             <div className="flex items-center justify-center">
               <ArrowBackIosNewIcon />
               <Image
