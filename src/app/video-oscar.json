@@ -1,0 +1,146 @@
+[
+  {
+      "start": 0,
+      "text": "vamos a hablar de javascript y vamos a hacer un tutorial en el menor tiempo posible y esto significa que entendamos las principales características que nos entrega Este lenguaje de programación si ya sabes javascript ayúdame a seguir evangelizando a la comunidad y déjame aquí tus mejores tips recomendaciones y por donde empezar Así que también puedes recomendarnos algunos cursos que tenemos acá en platzing Pero bueno arranquemos entendiendo un poco que es javascript y aquellos que se preguntarán Bueno si"
+  },
+  {
+      "start": 39,
+      "text": "Oscar es un lenguaje de programación déjame decirte que si tienes toda la razón pero es un lenguaje que tiene bastante historia desde 1995 nació en el auge de los navegadores y recordemos que el internet como propuesta y como un curso que fue propuesto para la humanidad fue en 1989 1990 allá en el Sam gracias a Tim berner Lee proponiendo lo que conocemos como la www y hoy en día Todo lo que ahora englobamos dentro de internet y ahí nacieron las primeras páginas web el primer navegador y bueno mucho más temas"
+  },
+  {
+      "start": 84,
+      "text": "de la historia pero no fue hasta 1995 que nació con diferentes nombres pero con la finalidad de enriquecer las páginas web ahí brendan age un ingeniero de mozilla nos mostró las habilidades de crear un lenguaje en un corto tiempo con la capacidad de poder hacer y enriquecer estas páginas web Y sí desde 1995 a la fecha se ha mantenido nuestro lenguaje que como te menciono es favorito y amado por muchos muchas en esta gran comunidad Así que ahí tienes un dato histórico que de alguna manera nació en un tema de"
+  },
+  {
+      "start": 127,
+      "text": "conflicto entre algunas empresas pero también dando la finalidad de seguir creciendo y dándonos opciones para lo que hoy en día es la web y Bueno será la pregunta más común y nos la haremos y es todos podemos aprender de javascript y La respuesta es Sí porque javascript lo mejor de todo es que por defecto al tener una computadora e independientemente si tienes o no la mejor lo único que tienes que hacer es tener una computadora y ahí ya en tu navegador que por defecto viene en cualquier computador en este caso"
+  },
+  {
+      "start": 168,
+      "text": "hablando de Windows si eres un poquito más de Mago es o aquel que ya tiene un poco más de toque e instala genu Linux en todos por defecto también se instala un navegador Y como te tiene javascript nace para enriquecer las páginas web por lo tanto ahí en tu navegador en cualquiera del que estés utilizando se puede utilizar javascript Así que no hay que instalar nada no hay necesidad de poder utilizar un software alguna herramienta algún recurso no ya lo tienes ahí Y eso es lo mejor pero qué te parece si damos lo unos pasos vamos a"
+  },
+  {
+      "start": 206,
+      "text": "dar tus primeros pasos vamos a hacerlo aquí en vivo vamos a ir entendiendo las capacidades que nos puede dar Así que para ello lo que vamos a hacer lo primero que vamos a hacer en mi navegador es abrir un tag vacío y para abrir un Tab vacío esto es muy simple abres un tap Y en vez de poner una dirección vamos a poner about dos puntos Black y al darle clic te va a abrir una vista totalmente blanca con una página web sin nada Y eso es lo mejor porque aquí va a ser nuestro playground donde vamos a aprender y dar nuestros primeros"
+  },
+  {
+      "start": 243,
+      "text": "pasos en javascript ahora viene un punto que es importante y es abrir la experiencia de desarrollo la developer Tools y bueno También tenemos un curso que te dejaré por acá por si quieres tomarlo y aprender un poco más ahora qué vamos a hacer Vamos a darle inspeccionar en algunos navegadores Es probable que tengas que darle en algún menú particularmente en la parte superior y encontrar el apartado de Avanzada es la experiencia de desarrollo o developer Tools Aquí vamos a poder ver todo el tema de lo que implica inspeccionar"
+  },
+  {
+      "start": 278,
+      "text": "nuestra página web Aquí vamos a poder acceder a lo que sería ver cómo está construida la página y dentro tenemos acceso a lo que está un Tab llamado conson dentro de conson lo que nosotros vamos a poder tener es acceso a dar nuestras primeras líneas de javascript Y sí como te menciono lo único que tienes que hacer es tener un navegador y que como te menciono está por defecto instalado Entonces qué podemos hacer aquí qué podemos dar Qué código podemos ejecutar Pues bueno Te iré explicando las particularidades Y qué te parece si"
+  },
+  {
+      "start": 315,
+      "text": "entramos por lo más básico declarar una variable y Qué significa esto de declarar una variable bueno nosotros podemos asignar en un espacio de memoria elementos en este caso que van a tener diferentes tipos como puede ser un String una cadena de caracteres un valor numérico puede ser una función o pueden ser diferentes elementos y aquí es donde nos damos cuenta que Este lenguaje de programación soporta diferentes tipos de datos para esto entonces podemos ejecutar con una palabra reservada que se llama led vamos a poder asignar"
+  },
+  {
+      "start": 351,
+      "text": "nosotros lo que vendría siendo el valor del nombre de la variable entonces podemos decir name y Esto va a ser igual a el String el carácter que nosotros queremos asignar en este caso puede ser desde uno hasta los que nosotros queramos en este caso pues puede ser un String extremadamente largo pero yo quiero poner Oscar y si le damos enter ya hemos generado nuestra primera instrucción a lo que sería la consola esta podría llamarse la primer línea de código que estarás haciendo en javascript Y cómo la puedo ver cómo la"
+  },
+  {
+      "start": 396,
+      "text": "puedo llamar Pues yo puedo llamar aquí name y podemos ver que me regresa lo que he guardado en este pequeño espacio de memoria donde pues javascript es parte y como te menciono está dentro de nuestro navegador Ahora yo puedo guardar diferentes elementos con diferentes palabras reservadas como una variable que es una constante la cual le puedo poner Pi y voy a decir que pi es igual a 3.1416 aquí estoy agregando un valor numérico al yo darle enter nuevamente estoy asignándolo y ahora puedo llamar a pi en"
+  },
+  {
+      "start": 433,
+      "text": "este caso reconoce por mayúsculas y minúsculas y ya hay que tener mucho cuidado en eso porque podemos tener variables que puedan parecer que son iguales pero realmente no lo es como lo puedes ver al yo haber ejecutado pi me sale un error y recordemos que los errores son nuestros amigos y si lo analizamos nos dice que pi no está definido Y si nosotros revisamos nuestro código nos damos cuenta que lo asignamos en mayúsculas por lo tanto al yo darle enter a este nuevo pin podemos ver que me regresa el valor y así yo puedo"
+  },
+  {
+      "start": 469,
+      "text": "asignar diferentes elementos en memoria que más adelante dentro de la construcción de un programa me van a servir para hacer cosas interesantes pero cuando ya entramos en un lenguaje nos damos cuenta que hay diferentes elementos que podemos utilizar como podría ser una estructura de control y que es una estructura de control bueno nosotros podemos validar información yo aquí puedo eliminar todo en este apartadito y ahora lo que quiero hacer es una validación imaginemos que tengo variables tengo elementos que asignan"
+  },
+  {
+      "start": 505,
+      "text": "una estructura y yo aquí voy a decir If si esto y voy a poner entre paréntesis hay una condición Que debe de suceder donde yo puedo decir que si edad es mayor que o igual a 18 o 19 o 21 o el valor numérico que tú desees podemos decir 20 entonces yo dentro puedo ejecutar lo que vendría siendo una lógica en particular que en este caso puedo decir que y con un valor llamado con sol punto log que sí es mayor de edad entonces Oscar es mayor de edad entonces yo puedo crear un programa donde valido si mi edad que está pasando"
+  },
+  {
+      "start": 550,
+      "text": "se en una variable es mayor o igual a el valor 20 yo puedo entonces hacer una cadena o ejecutar un bloque de código que en este caso lo que yo quiero ejecutar es con sol log por lo tanto aquí es donde podemos ir añadiendo elementos Pero qué pasa si quiero tener diferentes consecuencias como puede ser un Else sino si no es verdad esto o si no hay una coincidencia puedo ejecutar entonces Else y generar otro bloque donde ya vamos analizando el código nos damos cuenta que empieza a ser fácil de entender y de ir"
+  },
+  {
+      "start": 588,
+      "text": "estructurando nuestro código y aquí podemos decir en el console log que no es mayor de edad entonces podemos decir aquí dentro Oscar no es mayor de edad y de esta forma vamos viendo que manejamos bloques estructuras y nos va a permitir ir trabajando con algunos elementos en este caso yo aquí puedo decir también el pasar el valor directo puedes ir sí 10 es y mayor que o igual a 20 Pues vamos a ejecutar Este detalle y si lo ejecutamos o este pedazo de código nos muestra Oscar no es mayor de edad y con eso"
+  },
+  {
+      "start": 634,
+      "text": "podemos tener una de las estructuras de control mucho más populares ahora qué más podemos hacer Bueno nosotros podemos encapsular dentro de javascript lo que vendría siendo funciones y una función es una pieza de código que nosotros vamos a construir y que queremos reutilizar porque va a haber diferentes casos de uso que necesitemos para esto vamos a declarar una variable o vamos a declarar nuestra función con el nombre de función le vamos a pasar un nombre en este caso yo puedo decir de sumar suma y voy a"
+  },
+  {
+      "start": 680,
+      "text": "decir que va a recibir dos elementos a y b los cuales van a ser los valores numéricos que yo quiero sumar dentro voy a tener mi bloque donde yo voy a tener aquí la lógica que yo voy a necesitar hacer y voy a tener un ratón aquí ahí cometí un pequeño detalle y es que le di enter antes y bueno la instrucción no se construyó como debe de ser para eso voy a cerrar nuevamente y Aquí vamos a ejecutar la función suma vamos a pasarle a y b y luego vamos a tener los elementos donde yo quiero obtener un retorno"
+  },
+  {
+      "start": 724,
+      "text": "y luego vamos a decir que a más B como podemos ver en esta pieza de código lo que estoy haciendo es poder utilizar cuantas veces necesite esta función yo la voy a crear y yo voy a decir suma y ahora voy a poder darle valor uno y el valor dos para que cuando yo la ejecute pueda ver el valor 3 pero puedo utilizarla cuantas veces sea necesario suma de 20 y 20 y al ejecutarla puedo ver que ahora tengo un valor número 40 y así puedo hacer diferentes funciones con diferentes estructuras que puedo tener"
+  },
+  {
+      "start": 770,
+      "text": "en este caso puedo crear otra función que yo puedo llamarle resta donde si analizamos nuestro código vamos a ver qué tiene ya una estructura muy similar en algunos elementos le pasamos a y b y lo vamos a decir que retorna retorne Y en este caso sería a menos b y ahora ya tenemos nuestra lógica para tener una función resta de esta forma vamos a generar cuantas funciones sean necesarias para construir nuestras aplicaciones esto es otro de los elementos que hay que tener presentes dentro de nuestra"
+  },
+  {
+      "start": 815,
+      "text": "aplicativo Pero qué te parece si vamos a un tema un poco más avanzado y para eso lo que vamos a hacer es entrar y en mi caso voy a entrar a un sitio web del mío y lo que voy a hacer es la manipulación del Don una de las características que te mencionaba de javascript es poder enriquecer las páginas web Así que una de las cosas que podemos hacer es también acceder a elementos que están dentro de nuestra página web en mi caso quiero acceder a este botón que es un todo que me permite cambiar Mostrar lo"
+  },
+  {
+      "start": 861,
+      "text": "que sería el Dark mode de una página web Así que lo que voy a hacer ahora es generar un led le voy a poner valor de botón boron y Esto va a ser igual a document que es el documento de mi página web y luego decir que busque por get Element by i o sea un ID particular que tiene este elemento y a este elemento yo lo voy a buscar y al buscarlo se llama todo guión de tema Entonces vamos a poner bien aquí todo el dim y voy a traerlo con esto voy a ver si estoy trayendo el botón y veo que sí aquí existe el botón y al pasar"
+  },
+  {
+      "start": 905,
+      "text": "el mouse veo que tengo acceso a este elemento qué puedo hacer con este valor Pues bueno yo puedo hacer triggers de eventos que van a suceder particularmente cuando le den clic Así que lo que yo puedo hacer es decir que a mi botón le vamos a hacerlo bien porque le di enter antes puedo entonces agregar un evento que me va a permitir a mí pasarle el evento que yo quiero en mi caso va a hacer clic y con esto yo voy a tener ahora una función anónima porque no va a tener un nombre function y aquí lo que"
+  },
+  {
+      "start": 951,
+      "text": "voy a hacer ahora es pasar una lógica en esta lógica lo que voy a hacer es un console.log que me permita a mí Mostrar se hizo clic lo pasamos como String para que no tengamos ningún problema y le damos enter cada vez que yo haga clic ahora pueden ver que aquí abajo en la parte inferior se va contando Cuántas veces le he dado clic y de esta forma estás manipulando el dom o trabajando con el don Pero qué pasa si yo desde código quiero manipular las cosas Pues bueno puedo decirle que a mi botón punto clic"
+  },
+  {
+      "start": 1000,
+      "text": "Y esto es una función que se va a desencadenar y lo puedo hacer directamente desde la consola sin tener que interactuar con la página web y todo esto Gracias a javascript Para que vean que javascript es muy muy poderoso y es una gran herramienta que nos permite hacer cosas interesantes y bueno por ahí ya para ir cerrando Qué les parece si hacemos algo más avanzado y es el tema de la sincronismo que es una forma en la que nosotros vamos a poder trabajar dentro de javascript para hacer solicitudes a una Epi no bloquear"
+  },
+  {
+      "start": 1035,
+      "text": "nuestra aplicación es un concepto un poco avanzado Pero no te preocupes es fácil de entender y también tenemos un curso que te dejaré por acá para que puedas aprender así que ya vamos a hacer una función aquí hay que poner mucha atención vamos a hacer una función le vamos a poner y le vamos a llamar get products vamos a hacer esta función que queremos tener por acá Déjenme que aquí Se me movió todo y luego lo que vamos a hacer en esta función es poner el llamado de una espía y particularmente una IP hay que nosotros queremos para"
+  },
+  {
+      "start": 1074,
+      "text": "esto vamos a poner una constante la cual le voy a llamar y vamos a decir que es igual a lo que anteriormente hablamos que es una variable o una constante que vamos a asignar en memoria para este caso voy a utilizar la Api que tiene platzy No si sabías que placity tiene una fake Api en la cual puedes poner a prueba tus habilidades hacerle get post y probar y jugar con ella y lo encuentras y aquí voy a hacer el llamado directamente a esta misma https Slash Slash Api punto escuela js.co Slash Api Slash B1 de la versión 1"
+  },
+  {
+      "start": 1114,
+      "text": "y vamos a traer products y con esto Ahora aquí lo que voy a hacer es entonces continuar con mi función o mi lógica para eso voy a utilizar fidge que es una estructura que me va a permitir a mí hacer la solicitud a este sitio web para traer la información y presentarla fecha Recibe un valor que en este caso URL y luego de aquí lo que voy a hacer es una promesa lo que nos retorna por lo tanto aquí lo que vamos a hacer es el uso de den Y una promesa no es más que lo que dice su nombre algo que va a"
+  },
+  {
+      "start": 1154,
+      "text": "suceder cuando puede ser mañana puede ser hoy o nunca y basado en eso tenemos una respuesta o tenemos un reed Así que en el dem podemos recibir el response que va a ser parte de la respuesta de nuestra Api y la vamos a transformar response Jason para que nos lo entreguen un formato más amigable después vamos a ejecutar otro dem otra acción que necesitamos y dentro de esta misma lo que vamos a hacer es el console.log de la Data que nos regresa en este caso la información ya transformada así que lo"
+  },
+  {
+      "start": 1194,
+      "text": "que vamos a hacer por acá es hacer nuestra estructura que debe de ser más Correcta Por acá que yo lo andaba cometiendo el error es Data regresar y lo decimos que con solo de Data y en dado caso que hubiese un error nosotros podemos utilizar Catch para capturar el error y decirle aquí error y decimos nuevamente conson.log de error y con esto ya tenemos lo que vendría siendo la forma de poder hacer una solicitud a una Api guardamos nuestra función y aquí tenemos hay un valor tenemos un error vamos a ver fíjense nos está"
+  },
+  {
+      "start": 1234,
+      "text": "diciendo que tenemos algo mal vamos a analizar bueno primeramente veamos que tenemos nuestra función hay una un valor aquí hay un valor que hace falta cerrar este de aquí damos no nuevamente tenemos un error no está funcionando vamos a ver aquí nuevamente cerramos No cerramos correctamente Por acá validemos todo listo Ahora sí cuando nos regresa el valor o el Chrome nuevamente Ahora sí podemos decir que get products y la llamamos Esto va a esperar un poco puedes notar que esto pasa pero hemos visto que ya hemos llamado a la"
+  },
+  {
+      "start": 1274,
+      "text": "fake Api tenemos productos que vienen desde un servicio que puede ser de terceros y con esto ya has creado una función que usa variables que utiliza el método de Fest que es una promesa y con eso me regreso entonces a explicarte cómo puedes avanzar o seguir haciendo cosas súper geniales y para eso quiero ya ir cerrando con supergiros No si sabías que tenemos un reto diario de javascript donde puedes aprender poner en práctica tus habilidades ir a los cursos que te van a enseñar estas mismas y puedes ir a buscarlo en GS Hero punto"
+  },
+  {
+      "start": 1314,
+      "text": "placi.com ahí encontrarás todos los días retos así también como challenge que van a ir depende de las habilidades que vayas adquiriendo también déjame decirte y aquí en Primicia es que tenemos el de 30 días de javascript vas a poder tener 30 ejercicios distintos con diferentes habilidades adquiridas a lo largo de diferentes cursos que vamos a ir teniendo con lecturas y lo mejor de todo con un espacio de juegos nuestro querido playground donde puedes ejecutar javascript sin tener que salirte de placi sin tener que abrir la consola"
+  },
+  {
+      "start": 1354,
+      "text": "como lo he hecho sino que vas a tener una ventana donde ahí mismo vas a poder ejecutar código vas a abrir un editor online vas a poder correr tus pruebas y validar tus habilidades tienes tres intentos y tienes toda una comunidad y aprendizaje para que lo puedas hacer lo único que tienes que hacer para participar es ir a platch.com Slash 30 días js y utilizar el hashtag de 30 días js platz y para que puedas compartir tus retos Cada día que vayas aprendiendo javascript con los cursos ejercicios con"
+  },
+  {
+      "start": 1394,
+      "text": "las lecturas lo vas a poder ir sumando a tu aprendizaje Así que déjame decirte que este es el momento de que te inscribas porque el reto va a comenzar el primero de marzo y de ahí vamos a contar días y días de aprendizaje lo mejor es que vamos a traer algunos especialistas de javascript profes y profesoras para que puedas seguir aprendiendo y bueno con ello dominar este gran lenguaje y bueno no me queda más que decirte que tienes todo el contenido de la escuela web en platzy.com/h donde aprenderás javascript"
+  },
+  {
+      "start": 1434,
+      "text": "y todas sus ventajas y bondades para convertirte en un gran profesional así que espero seas un amante como yo de javascript y Bueno recuerda nunca pares de aprender javascript tenemos un curso gratis solo para ti Haz clic aquí y empieza las clases del curso de programación en platzi y si quieres saber más sobre tecnología Haz clic en este vídeo que seguro disfrutarás nunca pares de aprender Dale click Dale Y qué esperas para darle click Oye y Dale click en serio Dale click"
+  }
+]

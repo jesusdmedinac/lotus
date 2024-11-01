@@ -77,7 +77,7 @@ export default function Home() {
     logEvent(analytics, "seguir_viendo_el_video");
   };
 
-  const youtubeURLId = "SL6qw9-9NEQ";
+  const youtubeURLId = "fos_lLlwBSU";
   const youtubeThumbnail = `http://i3.ytimg.com/vi/${youtubeURLId}/hqdefault.jpg`
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handlePlay = (event: any) => {

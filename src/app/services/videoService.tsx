@@ -1,4 +1,4 @@
-import video from "@/app/video.json";
+import video from "@/app/video-oscar.json";
 
 export function fetchVideoTranscript(counter: number) {
   return video.find((section) => {
