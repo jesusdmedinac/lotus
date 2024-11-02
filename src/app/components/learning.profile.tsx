@@ -35,8 +35,8 @@ export default function LearningProfile() {
             className='rounded-xl p-2 size-12 bg-[#9C27B0] text-[#00000080]'
           />
           <div className='flex flex-col w-full pl-2 font-semibold'>
-            <p>1 h 2 m</p>
-            <p>Aprendido</p>
+            <p>2 clases</p>
+            <p>Progreso</p>
           </div>
         </div>
         <div className='flex-auto flex flex-row justify-start items-center p-4 m-2 rounded-lg bg-[#1E2229]'>

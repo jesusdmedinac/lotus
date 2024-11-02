@@ -7,6 +7,7 @@ import SliderSuggestions from "./slider.suggestions";
 import { Analytics, logEvent } from "firebase/analytics";
 import { useState } from "react";
 import LearningProfile from "./learning.profile";
+import SuggestedTeachers from "./suggested.teachers";
 
 export default function AccordionSuggestions({
   currentTranscript,
@@ -44,6 +45,23 @@ export default function AccordionSuggestions({
         <AccordionDetails>
           <LearningProfile>
           </LearningProfile>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion className="bg-background text-white">
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon
+            className="text-white"
+            />}
+          aria-controls="panel1-content"
+          id="panel1-header"
+          onClick={() => {}}
+        >
+          <Typography>
+            Estos profesores tienen tu estilo
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <SuggestedTeachers />
         </AccordionDetails>
       </Accordion>
       <Accordion className="bg-background text-white">
