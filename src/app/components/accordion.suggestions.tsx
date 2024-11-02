@@ -6,6 +6,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import SliderSuggestions from "./slider.suggestions";
 import { Analytics, logEvent } from "firebase/analytics";
 import { useState } from "react";
+import LearningProfile from "./learning.profile";
 
 export default function AccordionSuggestions({
   currentTranscript,
@@ -27,20 +28,34 @@ export default function AccordionSuggestions({
   }
   return (
     <div className="absolute top-52">
-      <Typography>
-        Transcripción actual:
-        <Markdown>
-          {currentTranscript}
-        </Markdown>
-      </Typography>
-      <Accordion>
+      <Accordion className="bg-background text-white">
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon
+            className="text-white"
+             />}
+          aria-controls="panel1-content"
+          id="panel1-header"
+          onClick={() => {}}
+        >
+          <Typography>
+            Conoce tu perfil de aprendizaje
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <LearningProfile>
+          </LearningProfile>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion className="bg-background text-white">
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon
+            className="text-white"
+             />}
           aria-controls="panel1-content"
           id="panel1-header"
           onClick={onSuggestionsClick}
         >
-          Contenido adicional
+          Continua aprendiendo a tu estilo
         </AccordionSummary>
         <AccordionDetails>
           <SliderSuggestions items={suggestedContentList} />
