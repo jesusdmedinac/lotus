@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Button, Modal } from "@mui/material";
+import { Box, Button, Modal, useTheme, Zoom } from "@mui/material";
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import AccordionSuggestions from "./components/accordion.suggestions";
@@ -143,6 +143,12 @@ export default function Home() {
     window.open("https://calendly.com/jesusdmedinac/lotus-internal-testing")
   }
 
+  const theme = useTheme();
+  const transitionDuration = {
+    enter: theme.transitions.duration.enteringScreen,
+    exit: theme.transitions.duration.leavingScreen,
+  };
+
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
@@ -153,19 +159,28 @@ export default function Home() {
           handlePause={handlePause}
            />
       </div>
-      <Button onClick={handleOpen} className="bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% z-50 right-12 top-12 absolute rounded-full px-4 py-2 text-lg text-white">
-        <div className="flex items-center justify-center">
-          <Image
-            src="/lotus.svg"
-            alt="Logo Lotus"
-            width={32}
-            height={32}
-            />
-          <p className="ml-2">
-            Descubre más en Lotus
-          </p>
-        </div>
-      </Button>
+      <Zoom
+        in={counter >= 3}
+        timeout={transitionDuration.enter}
+        style={{
+          transitionDelay: `${transitionDuration.exit}ms`,
+        }}
+        unmountOnExit
+      >
+        <Button onClick={handleOpen} className="bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% z-50 right-12 top-12 absolute rounded-full px-4 py-2 text-lg text-white">
+          <div className="flex items-center justify-center">
+            <Image
+              src="/lotus.svg"
+              alt="Logo Lotus"
+              width={32}
+              height={32}
+              />
+            <p className="ml-2">
+              ¿No te gusta la clase?
+            </p>
+          </div>
+        </Button>
+      </Zoom>
       <Modal
         open={open}
         onClose={handleClose}
