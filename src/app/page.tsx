@@ -204,9 +204,7 @@ export default function Home() {
             </div>
           </Button>
           <AccordionSuggestions 
-            currentTranscript={currentTranscript}
             suggestedContentList={suggestedContentList}
-            analytics={analytics}
           />
         </Box>
       </Modal>
