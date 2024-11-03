@@ -9,7 +9,7 @@ export default function LearningProfile() {
     <div className='flex flex-col w-full justify-start'>
       <div className="flex flex-row w-full justify-start items-center">
         <Person2Icon
-          className='rounded-full bg-primary text-on-primary p-4 size-16'
+          className='rounded-full bg-primary text-on-primary p-2 size-12'
         />
         <div className='flex flex-col w-full justify-center p-4'>
           <p className='text-xl'>

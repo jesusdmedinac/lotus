@@ -161,7 +161,7 @@ export default function Home() {
            />
       </div>
       <Zoom
-        in={counter >= 3}
+        in={true || counter >= 3}
         timeout={transitionDuration.enter}
         style={{
           transitionDelay: `${transitionDuration.exit}ms`,
