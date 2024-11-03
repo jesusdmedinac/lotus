@@ -29,84 +29,20 @@ export default function AccordionSuggestions({
   }
   return (
     <div className="absolute top-52">
-      <Accordion className="bg-background text-white">
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon
-            className="text-white"
-             />}
-          aria-controls="panel1-content"
-          id="panel1-header"
-          onClick={() => {}}
-        >
-          <Typography>
-            Conoce tu perfil de aprendizaje
-          </Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <LearningProfile>
-          </LearningProfile>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion className="bg-background text-white">
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon
-            className="text-white"
-            />}
-          aria-controls="panel1-content"
-          id="panel1-header"
-          onClick={() => {}}
-        >
-          <Typography>
-            Estos profesores tienen tu estilo
-          </Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <SuggestedTeachers />
-        </AccordionDetails>
-      </Accordion>
-      <Accordion className="bg-background text-white">
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon
-            className="text-white"
-             />}
-          aria-controls="panel1-content"
-          id="panel1-header"
-          onClick={onSuggestionsClick}
-        >
-          Continua aprendiendo a tu estilo
-        </AccordionSummary>
-        <AccordionDetails>
-          <SliderSuggestions items={suggestedContentList} />
-        </AccordionDetails>
-      </Accordion>
-      {/*<Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2-content"
-          id="panel2-header"
-        >
-          Test
-        </AccordionSummary>
-        <AccordionDetails>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion >
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel3-content"
-          id="panel3-header"
-        >
-          Accordion Actions
-        </AccordionSummary>
-        <AccordionDetails>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          malesuada lacus ex, sit amet blandit leo lobortis eget.
-        </AccordionDetails>
-        <AccordionActions>
-          <Button>Cancel</Button>
-          <Button>Agree</Button>
-        </AccordionActions>
-      </Accordion>*/}
+      <h2 className="text-2xl font-semibold mb-4">
+        Conoce tu perfil de aprendizaje
+      </h2>
+      <LearningProfile>
+      </LearningProfile>
+      <h2 className="text-2xl font-semibold mb-4">
+        Estos profesores tienen tu estilo 😎
+      </h2>
+      <SuggestedTeachers />
+      <h2 className="text-2xl font-semibold mb-4">
+        Continua aprendiendo a tu estilo
+      </h2>
+      <SliderSuggestions items={suggestedContentList} />
+      <div className="h-52"></div>
     </div>
   );
 }
