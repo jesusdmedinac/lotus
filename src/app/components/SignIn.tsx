@@ -3,23 +3,23 @@
 import { useEffect } from "react";
 import { signInAnonymously } from "firebase/auth";
 import { createNewUser } from "@/app/services/prismaService";
-import { useFirebaseAuth } from "../context/Context";
+import { useFirebaseAuth } from "@/app/context/Context";
 
-export default function CreateUser() {
+export default function SignIn() {
   const auth = useFirebaseAuth();
   useEffect(() => {
-    async function createAnonymousUser() {
+    async function signIn() {
       try {
         if (!auth) return;
         const userCredential = await signInAnonymously(auth);
         const userId = userCredential.user.uid;
         const user = await createNewUser(userId);
-        console.log("Anonymous user created:", user);
+        console.log("User logged in:", user);
       } catch (error) {
-        console.error("Error creating anonymous user:", error);
+        console.error("Error signing in:", error);
       }
     }
-    createAnonymousUser();
+    signIn();
   }, [auth]);
 
   return <></>;

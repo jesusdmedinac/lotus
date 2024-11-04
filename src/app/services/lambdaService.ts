@@ -15,11 +15,7 @@ export async function fetchLambda1(url: string) {
     },
   });
 
-  const lambda1Response: Lambda1Response = await response.json();
-  const data = lambda1Response.data;
-  return await prisma.video.create({
-    data: data
-  })
+  return await response.json();
 }
 
 export async function fetchLambda2(perfil: string, materia: string, clase: string, tipoContenido: string): Promise<Lambda2Response> {

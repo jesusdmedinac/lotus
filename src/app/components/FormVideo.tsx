@@ -25,7 +25,7 @@ export default function FormVideo() {
   };
 
   const onSendClick = () => {
-    redirect(`/video?url=${urlValue}`);
+    redirect(`/home?url=${urlValue}`);
   };
 
   return (
