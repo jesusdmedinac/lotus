@@ -12,6 +12,7 @@ import CodeIcon from '@mui/icons-material/Code';
 import { Lambda2Data } from "../models/lambda2";
 import { Lambda3Data } from "../models/lambda3";
 import YouTubeComponent from "./youtube";
+import LoadingComponent from "@/app/components/LoadingComponent";
 
 export default function Suggestions({ url }: { url: string }) {
   const auth = useFirebaseAuth();
@@ -84,10 +85,10 @@ export default function Suggestions({ url }: { url: string }) {
     setSelectedTab(newValue);
   };
 
-  if (!auth) return <div>Loading...</div>;
-  if (!video) return <div>Loading...</div>;
-  if (!lambda2Data) return <div>Loading...</div>;
-  if (!lambda3Data) return <div>Loading...</div>;
+  if (!auth) return <LoadingComponent />;
+  if (!video) return <LoadingComponent />;
+  if (!lambda2Data) return <LoadingComponent />;
+  if (!lambda3Data) return <LoadingComponent />;
 
   const recomendaciones = lambda3Data.recomendaciones;
   const exactas = recomendaciones.exactas;
