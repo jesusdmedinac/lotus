@@ -1,11 +1,6 @@
 'use client';
 
 import App from "@/app/context/App";
-import { useEffect, useState } from "react";
-import { useFirebaseAuth } from "@/app/context/Context";
-import { signInAnonymously } from "firebase/auth";
-import { getUser } from "@/app/services/prismaService";
-import { User } from "@/app/models/user";
 import Admin from "../components/Admin";
 
 export default function Home() {

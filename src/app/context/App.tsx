@@ -10,7 +10,7 @@ import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
 import { ThemeProvider } from "@emotion/react";
 import { createTheme, useColorScheme } from "@mui/material";
-import { blue, deepPurple, green, pink } from "@mui/material/colors";
+import { green, pink } from "@mui/material/colors";
 
 export default function App({ children }: { children: React.ReactNode }) {
   const { systemMode } = useColorScheme();

@@ -9,6 +9,7 @@ import { signInAnonymously } from "firebase/auth";
 import { Box, Divider, Tab, Tabs } from "@mui/material";
 import TimerIcon from '@mui/icons-material/Timer';
 import CodeIcon from '@mui/icons-material/Code';
+import Image from "next/image";
 import { Lambda2Data } from "../models/lambda2";
 import { Lambda3Data } from "../models/lambda3";
 
@@ -49,7 +50,7 @@ export default function Suggestions({ url }: { url: string }) {
       }
     }
     signIn();
-  }, [auth]);
+  }, [auth, url]);
 
   useEffect(() => {
     async function loadSuggestions() {
@@ -111,7 +112,13 @@ export default function Suggestions({ url }: { url: string }) {
           <p className="px-4 py-2 text-lg font-semibold">{video.youtube.title}</p>
           <p className="px-4 py-2 text-md font-medium">{video.youtube.description.substring(0, 100) + "..."}</p>
         </div>
-        <img src={video.youtube.thumbnail} className="aspect-video rounded-xl max-w-96"/>
+        <Image 
+          src={video.youtube.thumbnail} 
+          alt="Imagen de YouTube" 
+          layout="fixed" 
+          width={96} 
+          height={54} 
+          className="rounded-xl"/>
       </div>
       <div className="flex flex-col w-full p-16 bg-slate-900">
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
