@@ -116,10 +116,16 @@ export default function Suggestions({ url }: { url: string }) {
               className="w-full aspect-video border-none z-0"
             />
           </div>
-          <p className="px-4 py-2 text-lg font-semibold">{video.materia}</p>
-          <div className="flex flex-row gap-2">
-            <p className="px-4 py-2 text-md font-medium rounded-lg border-2 border-slate-700">{video.clase}</p>
-            <p className="px-4 py-2 text-md font-medium rounded-lg border-2 border-slate-700">{video.estilo}</p>
+          <p className="px-4 py-2 text-lg font-semibold uppercase">{video.materia}</p>
+          <div className="flex flex-row gap-2 items-center mt-8">
+            <div className="flex flex-col">
+              <p>Nombre de la clase</p>
+              <p className="px-4 py-2 text-md font-medium rounded-lg border-2 border-slate-700">{video.clase}</p>
+            </div>
+            <div className="flex flex-col">
+              <p>Tu estilo de aprendizaje</p>
+              <p className="px-4 py-2 text-md font-medium rounded-lg border-2 border-slate-700">{video.estilo}</p>
+            </div>
           </div>
           <Divider className="pt-2" />
           <p className="px-4 py-2 text-lg font-semibold">{video.youtube.title}</p>
