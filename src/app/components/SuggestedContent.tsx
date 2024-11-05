@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { fetchLambda2 } from "../services/lambdaService";
 import { Lambda2Data } from "../models/lambda2";
 import LoadingComponent from "./LoadingComponent";
-import Markdown from "react-markdown";
 
 const tiposDeContenido = ["práctica", "ejemplo", "resumen", "examen"];
 
@@ -79,7 +78,7 @@ export default function SuggestedContent({ video }: { video: Video}) {
       <div className="flex flex-col w-full rounded-full">{
           loading ? 
           <LoadingComponent message="Generando contenido..." />
-          : <Markdown>{lambda2Data.contenido}</Markdown>
+          : <p className="px-4 py-2 text-md font-medium">{lambda2Data.contenido}</p>
       }</div>
     </div>
   );
