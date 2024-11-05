@@ -62,11 +62,12 @@ export default function Suggestions({ url }: { url: string }) {
   useEffect(() => {
     async function loadSuggestions() {
       if (!video) return;
+      const estilos = ["práctica", "ejemplo", "resumen", "examen"]
       const lambda2Response = await fetchLambda2(
         video.estilo,
         video.materia,
         video.clase,
-        "práctica"
+        estilos[Math.floor(Math.random() * estilos.length)]
       );
       const data = lambda2Response.data;
       setLambda2Data(data);
@@ -116,7 +117,8 @@ export default function Suggestions({ url }: { url: string }) {
               className="w-full aspect-video border-none z-0"
             />
           </div>
-          <p className="px-4 py-2 text-lg font-semibold uppercase">{video.materia}</p>
+          <p className="py-2 text-lg font-thin uppercase">{video.youtube.uploader}</p>
+          <p className="py-2 text-lg font-semibold uppercase">{video.materia}</p>
           <div className="flex flex-row gap-2 items-center mt-8">
             <div className="flex flex-col">
               <p>Nombre de la clase</p>
@@ -124,7 +126,7 @@ export default function Suggestions({ url }: { url: string }) {
             </div>
             <div className="flex flex-col">
               <p>Tu estilo de aprendizaje</p>
-              <p className="px-4 py-2 text-md font-medium rounded-lg border-2 border-slate-700">{video.estilo}</p>
+              <p className="px-4 py-2 text-md font-medium rounded-lg border-2 border-slate-700">{video.estilo.split(',')[0]}</p>
             </div>
           </div>
           <Divider className="pt-2" />
