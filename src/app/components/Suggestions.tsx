@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { fetchLambda1, fetchLambda2, fetchLambda3 } from "@/app/services/lambdaService";
 import { useFirebaseAuth } from "@/app/context/Context";
-import { Video } from "@/app/models/lambda1";
+import { Lambda1Response, Video } from "@/app/models/lambda1";
 import { Box, Divider, Tab, Tabs } from "@mui/material";
 import TimerIcon from '@mui/icons-material/Timer';
 import CodeIcon from '@mui/icons-material/Code';
@@ -22,9 +22,17 @@ export default function Suggestions({ url }: { url: string }) {
   useEffect(() => {
     async function loadSuggestions() {
       if (!auth) return;
-      const lambda1Response = await fetchLambda1(url);
-      const data = lambda1Response.data;
-      setVideo(data);
+      let descargado = false;
+      let lambda1Response: Lambda1Response | null = null;
+      while (!descargado) {
+        lambda1Response = await fetchLambda1(url);
+        const video = lambda1Response.data;
+        descargado = video.descargado;
+        setVideo(video);
+        if (!descargado) {
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+        }
+      }
     }
     loadSuggestions();
   }, [auth, url]);
@@ -62,10 +70,10 @@ export default function Suggestions({ url }: { url: string }) {
     setSelectedTab(newValue);
   };
 
-  if (!auth) return <LoadingComponent />;
-  if (!video) return <LoadingComponent />;
-  if (!lambda2Data) return <LoadingComponent />;
-  if (!lambda3Data) return <LoadingComponent />;
+  if (!auth) return <LoadingComponent message={"Generando perfil de estudio..."} />;
+  if (!video) return <LoadingComponent message={"Generando perfil de estudio..."} />;
+  if (!lambda2Data) return <LoadingComponent message={video?.estatus} />;
+  if (!lambda3Data) return <LoadingComponent message={video?.estatus} />;
 
   const recomendaciones = lambda3Data.recomendaciones;
   const exactas = recomendaciones.exactas;

@@ -36,7 +36,7 @@ export default function App({ children }: { children: React.ReactNode }) {
     setAuth(auth);
   }, []);
 
-  if (!app || !analytics || !auth) return <LoadingComponent />;
+  if (!app || !analytics || !auth) return <LoadingComponent message="" />;
   return (
     <FirebaseAppContext.Provider value={app}>
       <FirebaseAnalyticsContext.Provider value={analytics}>
