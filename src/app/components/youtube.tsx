@@ -4,12 +4,14 @@ export default function YouTubeComponent({
   id,
   handlePlay,
   handlePause,
+  className
  }: {
   id: string,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   handlePlay: (event: any) => void,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   handlePause: (event: any) => void,
+  className: string | null
  }) {
   const opts = {
     height: '100%',
@@ -21,11 +23,11 @@ export default function YouTubeComponent({
 
   return (
     <YouTube 
-    videoId={id}
-    opts={opts}
-    className="w-full h-full border-none z-0"
-    onPlay={handlePlay}
-    onPause={handlePause}
-    />
+      videoId={id}
+      opts={opts}
+      className={className}
+      onPlay={handlePlay}
+      onPause={handlePause}
+      />
   );
 }
