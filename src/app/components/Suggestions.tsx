@@ -139,7 +139,10 @@ export default function Suggestions({ url }: { url: string }) {
             <div className="flex flex-col items-center w-full">
               <Divider className="w-20" textAlign="center"  />
             </div>
-            <p className="px-4 py-2 text-2xl font-semibold">Este contenido te podría interesar</p>
+            <div className="flex flex-row w-full font-semibold items-center">
+              <p className="px-4 py-2 text-2xl">Contenido de acuerdo a tu estilo</p>
+              <p className={`text-lg rounded-lg uppercase p-2 ${estilos[estilo]}`}>{estilo}</p>
+            </div>
             <div className="px-4 py-2 flex flex-row w-full">
               <p className="px-4 py-2 text-md border-2 border-slate-700 rounded-lg">{lambda2Data.tipo}</p>
             </div>
