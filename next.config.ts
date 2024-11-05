@@ -14,6 +14,12 @@ const nextConfig: NextConfig = {
         hostname: 'static.platzi.com',
         port: '',
         pathname: '/cdn-cgi/image/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.ytimg.com',
+        port: '',
+        pathname: '/vi/**',
       }
     ]
   }

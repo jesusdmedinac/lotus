@@ -84,8 +84,6 @@ export default function Suggestions({ url }: { url: string }) {
     setSelectedTab(newValue);
   };
 
-  console.log("lambda3Data", lambda3Data);
-
   if (!auth) return <div>Loading...</div>;
   if (!video) return <div>Loading...</div>;
   if (!lambda2Data) return <div>Loading...</div>;
