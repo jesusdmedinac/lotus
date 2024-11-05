@@ -9,8 +9,8 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { initializeApp } from "firebase/app";
 import { Analytics, getAnalytics, logEvent } from "firebase/analytics";
 import { getAuth, Auth, signInAnonymously } from "firebase/auth";
-import { fetchVideoTranscript } from "./services/videoService";
-import { fetchSuggestedContent } from "./services/geminiService";
+import { fetchVideoTranscript } from "@/app/services/videoService";
+import { fetchSuggestedContent } from "@/app/services/geminiService";
 
 const style = {
   position: 'absolute',

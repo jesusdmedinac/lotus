@@ -131,11 +131,54 @@ export async function createNewUser(userId: string) {
   return newUser;
 }
 
-export async function addVideo(userId: string, video: PrismaCreateVideo) {
+export async function addVideo(userId: string, video: PrismaCreateVideo): Promise<PrismaVideo> {
   const existingVideo = await prisma.video.findFirst({
     where: {
       youtube: {
         webpage_url: video.youtube.create.webpage_url
+      }
+    },
+    select: {
+      id: true,
+      materia: true,
+      clase: true,
+      estilo: true,
+      parrafos: {
+        select: {
+          id: true,
+          parrafo: true,
+          inicio: true,
+          fin: true,
+          tiempo: true,
+          estilo: true
+        }
+      },
+      youtube: {
+        select: {
+          id: true,
+          title: true,
+          duration: true,
+          webpage_url: true,
+          video_filename: true,
+          description: true,
+          subtitles: true,
+          thumbnail: true,
+          upload_date: true,
+          view_count: true,
+          uploader: true,
+          like_count: true,
+          dislike_count: true,
+          average_rating: true,
+          categories: true,
+          tags: true,
+          channel_id: true,
+          channel_url: true,
+          age_limit: true,
+          is_live: true,
+          start_time: true,
+          end_time: true,
+          chapters: true
+        }
       }
     }
   });
@@ -154,7 +197,7 @@ export async function addVideo(userId: string, video: PrismaCreateVideo) {
     }
   });
   console.log("User updated", user);
-  return video;
+  return existingVideo;
 }
 
 export async function deleteAllVideos(userId: string) {
@@ -193,6 +236,64 @@ export async function deleteAllVideos(userId: string) {
 
   console.log("User updated", user);
   return user;
+}
+
+export async function getVideo(videoId: number): Promise<PrismaVideo | null> {
+  const video = await prisma.video.findUnique({
+    where: {
+      id: videoId,
+    },
+    select: {
+      id: true,
+      materia: true,
+      clase: true,
+      estilo: true,
+      parrafos: {
+        select: {
+          id: true,
+          parrafo: true,
+          inicio: true,
+          fin: true,
+          tiempo: true,
+          estilo: true
+        }
+      },
+      youtube: {
+        select: {
+          id: true,
+          title: true,
+          duration: true,
+          webpage_url: true,
+          video_filename: true,
+          description: true,
+          subtitles: true,
+          thumbnail: true,
+          upload_date: true,
+          view_count: true,
+          uploader: true,
+          like_count: true,
+          dislike_count: true,
+          average_rating: true,
+          categories: true,
+          tags: true,
+          channel_id: true,
+          channel_url: true,
+          age_limit: true,
+          is_live: true,
+          start_time: true,
+          end_time: true,
+          chapters: true
+        }
+      }
+    }
+  });
+  if (video) {
+    console.log("Video found", video);
+    return video;
+  } else {
+    console.log("Video not found");
+    return null;
+  }
 }
 
 export async function getUser(userId: string) {
