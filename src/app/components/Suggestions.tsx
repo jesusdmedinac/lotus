@@ -2,10 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { fetchLambda1, fetchLambda2, fetchLambda3 } from "@/app/services/lambdaService";
-import { addVideo, getVideo, PrismaVideo } from "@/app/services/prismaService";
 import { useFirebaseAuth } from "@/app/context/Context";
 import { Video } from "@/app/models/lambda1";
-import { signInAnonymously } from "firebase/auth";
 import { Box, Divider, Tab, Tabs } from "@mui/material";
 import TimerIcon from '@mui/icons-material/Timer';
 import CodeIcon from '@mui/icons-material/Code';
@@ -16,47 +14,19 @@ import LoadingComponent from "@/app/components/LoadingComponent";
 
 export default function Suggestions({ url }: { url: string }) {
   const auth = useFirebaseAuth();
-  const [video, setVideo] = useState<PrismaVideo | null>(null);
+  const [video, setVideo] = useState<Video | null>(null);
   const [lambda2Data, setLambda2Data] = useState<Lambda2Data | null>(null);
   const [lambda3Data, setLambda3Data] = useState<Lambda3Data | null>(null);
   const [selectedTab, setSelectedTab] = useState(0);
 
   useEffect(() => {
-    if (!auth) return;
-    async function createVideo(userId: string, url: string) {      
+    async function loadSuggestions() {
+      if (!auth) return;
       const lambda1Response = await fetchLambda1(url);
-      const data: Video = lambda1Response.data;
-      const videoId = (await addVideo(userId, {
-        materia: data.materia,
-        clase: data.clase,
-        estilo: data.estilo,
-        parrafos: {
-          create: data.parrafos.map((parrafo) => ({
-            parrafo: parrafo.parrafo,
-            inicio: `${parrafo.inicio}`,
-            fin: `${parrafo.fin}`,
-            tiempo: parrafo.tiempo,
-            estilo: parrafo.estilo
-          }))
-        },
-        youtube: {
-          create: data.youtube
-        }
-      })).id;
-      const video = await getVideo(videoId);
-      setVideo(video);
-    };
-    async function signIn() {
-      try {
-        if (!auth) return;
-        const userCredential = await signInAnonymously(auth);
-        const userId = userCredential.user.uid;
-        createVideo(userId, url);
-      } catch (error) {
-        console.error("Error signing in:", error);
-      }
+      const data = lambda1Response.data;
+      setVideo(data);
     }
-    signIn();
+    loadSuggestions();
   }, [auth, url]);
 
   useEffect(() => {

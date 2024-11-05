@@ -10,9 +10,9 @@ const LAMBDA3_URL = "https://83rj7op87j.execute-api.us-east-1.amazonaws.com/lotu
 
 export async function fetchLambda1(url: string): Promise<Lambda1Response> {
   console.log('url:', url);
-  let materia = null;
+  let descargado = false;
   let lambda1Response = null;
-  while (!materia) {
+  while (!descargado) {
     const response = await fetch(`${LAMBDA1_URL}?url=${url}`, {
       method: "GET",
       headers: {
@@ -21,9 +21,9 @@ export async function fetchLambda1(url: string): Promise<Lambda1Response> {
     });
     lambda1Response = await response.json();
     console.log("lambda1Response", lambda1Response);
-    materia = lambda1Response?.data?.materia;
-    if (!materia) {
-      await new Promise(resolve => setTimeout(resolve, 3000));
+    descargado = lambda1Response?.data?.descargado;
+    if (!descargado) {
+      await new Promise(resolve => setTimeout(resolve, 1000));
     }
   }
   if (!lambda1Response) throw new Error('La respuesta es nula');
