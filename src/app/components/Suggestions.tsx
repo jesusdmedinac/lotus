@@ -1,21 +1,21 @@
 'use client';
 
 import { useEffect, useState } from "react";
-import { fetchLambda1, fetchLambda2, fetchLambda3 } from "@/app/services/lambdaService";
+import { fetchLambda1, fetchLambda3 } from "@/app/services/lambdaService";
 import { useFirebaseAuth } from "@/app/context/Context";
 import { Lambda1Response, Video } from "@/app/models/lambda1";
 import { Box, Divider, Tab, Tabs } from "@mui/material";
 import TimerIcon from '@mui/icons-material/Timer';
 import CodeIcon from '@mui/icons-material/Code';
-import { Lambda2Data } from "../models/lambda2";
 import { Lambda3Data } from "../models/lambda3";
 import YouTubeComponent from "./youtube";
 import LoadingComponent from "@/app/components/LoadingComponent";
+import SuggestedContent from "./SuggestedContent";
 
 export default function Suggestions({ url }: { url: string }) {
   const auth = useFirebaseAuth();
   const [video, setVideo] = useState<Video | null>(null);
-  const [lambda2Data, setLambda2Data] = useState<Lambda2Data | null>(null);
+  
   const [lambda3Data, setLambda3Data] = useState<Lambda3Data | null>(null);
   const [selectedTab, setSelectedTab] = useState(0);
 
@@ -40,22 +40,6 @@ export default function Suggestions({ url }: { url: string }) {
   useEffect(() => {
     async function loadSuggestions() {
       if (!video) return;
-      const estilos = ["práctica", "ejemplo", "resumen", "examen"]
-      const lambda2Response = await fetchLambda2(
-        video.estilo,
-        video.materia,
-        video.clase,
-        estilos[Math.floor(Math.random() * estilos.length)]
-      );
-      const data = lambda2Response.data;
-      setLambda2Data(data);
-    }
-    loadSuggestions();
-  }, [video]);
-
-  useEffect(() => {
-    async function loadSuggestions() {
-      if (!video) return;
       const lambda3Response = await fetchLambda3(
         video.estilo.split(',')[0],
         video.clase
@@ -72,7 +56,6 @@ export default function Suggestions({ url }: { url: string }) {
 
   if (!auth) return <LoadingComponent message={"Generando perfil de estudio..."} />;
   if (!video) return <LoadingComponent message={"Generando perfil de estudio..."} />;
-  if (!lambda2Data) return <LoadingComponent message={video?.estatus} />;
   if (!lambda3Data) return <LoadingComponent message={video?.estatus} />;
 
   const recomendaciones = lambda3Data.recomendaciones;
@@ -135,19 +118,7 @@ export default function Suggestions({ url }: { url: string }) {
           </Tabs>
         </Box>
         <CustomTabPanel value={selectedTab} index={0}>
-          <div className="flex flex-col w-full p-16 bg-slate-900">
-            <div className="flex flex-col items-center w-full">
-              <Divider className="w-20" textAlign="center"  />
-            </div>
-            <div className="flex flex-row w-full font-semibold items-center">
-              <p className="px-4 py-2 text-2xl">Contenido de acuerdo a tu estilo</p>
-              <p className={`text-lg rounded-lg uppercase p-2 ${estilos[estilo]}`}>{estilo}</p>
-            </div>
-            <div className="px-4 py-2 flex flex-row w-full">
-              <p className="px-4 py-2 text-md border-2 border-slate-700 rounded-lg">{lambda2Data.tipo}</p>
-            </div>
-            <p className="px-4 py-2 text-md font-medium">{lambda2Data.contenido}</p>
-          </div>
+          <SuggestedContent video={video} />
         </CustomTabPanel>
         <CustomTabPanel value={selectedTab} index={1}>
           <div className="flex flex-col w-full py-16 bg-slate-900">
