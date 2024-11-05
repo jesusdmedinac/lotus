@@ -62,7 +62,6 @@ export interface PrismaVideo {
   estilo: string
   parrafos: PrismaParrafo[]
   youtube: PrismaYoutube
-  user: PrismaUser
 }
 
 export interface PrismaParrafo {
@@ -72,7 +71,6 @@ export interface PrismaParrafo {
   fin: string
   tiempo: number
   estilo: string[]
-  video: PrismaVideo
 }
 
 export interface PrismaYoutube {
@@ -99,7 +97,6 @@ export interface PrismaYoutube {
   start_time: string | null
   end_time: string | null
   chapters: string | null
-  video: PrismaVideo
 }
 
 export async function deleteUser(userId: string) {
@@ -179,12 +176,15 @@ export async function addVideo(userId: string, video: PrismaCreateVideo): Promis
           end_time: true,
           chapters: true
         }
-      }
+      },
     }
   });
   if (existingVideo) {
     console.log("Video already exists", existingVideo);
-    return existingVideo;
+    if (!existingVideo.youtube) {
+      throw new Error("El video existente no tiene información de YouTube.");
+    }
+    return existingVideo as PrismaVideo;
   }
   const user = await prisma.user.update({
     where: {
@@ -194,23 +194,74 @@ export async function addVideo(userId: string, video: PrismaCreateVideo): Promis
       videos: {
         create: video
       }
+    },
+    select: {
+      id: true,
+      email: true,
+      name: true,
+      videos: {
+        select: {
+          id: true,
+          materia: true,
+          clase: true,
+          estilo: true,
+          parrafos: {
+            select: {
+              id: true,
+              parrafo: true,
+              inicio: true,
+              fin: true,
+              tiempo: true,
+              estilo: true
+            }
+          },
+          youtube: {
+            select: {
+              id: true,
+              title: true,
+              duration: true,
+              webpage_url: true,
+              video_filename: true,
+              description: true,
+              subtitles: true,
+              thumbnail: true,
+              upload_date: true,
+              view_count: true,
+              uploader: true,
+              like_count: true,
+              dislike_count: true,
+              average_rating: true,
+              categories: true,
+              tags: true,
+              channel_id: true,
+              channel_url: true,
+              age_limit: true,
+              is_live: true,
+              start_time: true,
+              end_time: true,
+              chapters: true
+            }
+          }
+        }
+      }
     }
   });
   console.log("User updated", user);
-  return existingVideo;
+  return user.videos[user.videos.length - 1] as PrismaVideo;
 }
 
 export async function deleteAllVideos(userId: string) {
   const videos = await prisma.video.findMany({
     where: {
       userId: userId
-    }
+    },
   });
 
+  const videoIds = videos.map((video) => video.id);
   await prisma.parrafo.deleteMany({
     where: {
       videoId: {
-        in: videos.map((video: PrismaVideo) => video.id)
+        in: videoIds
       }
     }
   });
@@ -218,7 +269,7 @@ export async function deleteAllVideos(userId: string) {
   await prisma.youtube.deleteMany({
     where: {
       videoId: {
-        in: videos.map((video: PrismaVideo) => video.id)
+        in: videoIds
       }
     }
   });
@@ -289,14 +340,17 @@ export async function getVideo(videoId: number): Promise<PrismaVideo | null> {
   });
   if (video) {
     console.log("Video found", video);
-    return video;
+    if (!video.youtube) {
+      throw new Error("El video existente no tiene información de YouTube.");
+    }
+    return video as PrismaVideo;
   } else {
     console.log("Video not found");
     return null;
   }
 }
 
-export async function getUser(userId: string) {
+export async function getUser(userId: string): Promise<PrismaUser | null> {
   const user = await prisma.user.findUnique({
     where: {
       id: userId
@@ -354,7 +408,7 @@ export async function getUser(userId: string) {
   });
   if (user) {
     console.log("User found", user);
-    return user;
+    return user as PrismaUser;
   } else {
     console.log("User not found");
     return null;
