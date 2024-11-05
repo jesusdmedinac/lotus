@@ -20,6 +20,7 @@ export async function fetchLambda1(url: string): Promise<Lambda1Response> {
       },
     });
     lambda1Response = await response.json();
+    console.log("lambda1Response", lambda1Response);
     materia = lambda1Response?.data?.materia;
     if (!materia) {
       await new Promise(resolve => setTimeout(resolve, 3000));
