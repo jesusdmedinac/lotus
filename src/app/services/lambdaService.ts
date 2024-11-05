@@ -4,10 +4,9 @@ import { Lambda1Response } from '@/app/models/lambda1';
 import { Lambda2Response } from '@/app/models/lambda2';
 import { Lambda3Response } from '../models/lambda3';
 
-const LAMBDA1_URL = "https://83rj7op87j.execute-api.us-east-1.amazonaws.com/lotus/test_descargar_video";
+const LAMBDA1_URL = "https://83rj7op87j.execute-api.us-east-1.amazonaws.com/lotus/descargar_video";
 const LAMBDA2_URL = "https://83rj7op87j.execute-api.us-east-1.amazonaws.com/lotus/contenido";
 const LAMBDA3_URL = "https://83rj7op87j.execute-api.us-east-1.amazonaws.com/lotus/recomendaciones";
-
 
 export async function fetchLambda1(url: string): Promise<Lambda1Response> {
   console.log('url:', url);
