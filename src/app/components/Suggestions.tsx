@@ -104,6 +104,15 @@ export default function Suggestions({ url }: { url: string }) {
     ...exactas,
     ...parecidas
   ];
+  const estilo = video.estilo.split(',')[0] as string;
+  const estilos: {
+    [key: string]: string
+  } = {
+    "teorico": "bg-pink-500",
+    "activo": "bg-green-500",
+    "pragmatico": "bg-sky-500",
+    "reflexivo": "bg-violet-500"
+  }
   
   return (
     <div className="flex flex-col w-full overflow-y-scroll">
@@ -117,19 +126,19 @@ export default function Suggestions({ url }: { url: string }) {
               className="w-full aspect-video border-none z-0"
             />
           </div>
-          <p className="py-2 text-lg font-thin uppercase">{video.youtube.uploader}</p>
-          <p className="py-2 text-lg font-semibold uppercase">{video.materia}</p>
-          <div className="flex flex-row gap-2 items-center mt-8">
-            <div className="flex flex-col">
-              <p>Nombre de la clase</p>
-              <p className="px-4 py-2 text-md font-medium rounded-lg border-2 border-slate-700">{video.clase}</p>
+          <div className="flex flex-row items-start justify-between w-full mt-8">
+            <div className="flex flex-col items-start w-full">
+              <p className="text-xl font-semibold uppercase">{video.youtube.uploader} - {video.materia}</p>
+              <div className="flex flex-row gap-4 items-center mt-2">
+                <p className="px-4 py-2 text-md font-medium rounded-lg border-2 border-slate-700">{video.clase.charAt(0).toUpperCase() + video.clase.slice(1)}</p>
+              </div>
             </div>
-            <div className="flex flex-col">
-              <p>Tu estilo de aprendizaje</p>
-              <p className="px-4 py-2 text-md font-medium rounded-lg border-2 border-slate-700">{video.estilo.split(',')[0]}</p>
+            <div className={`flex flex-col items-center font-bold gap-2`}>
+              <p>Estilo de aprendizaje</p>
+              <p className={`text-4xl rounded-lg uppercase p-4 ${estilos[estilo]}`}>{estilo}</p>
             </div>
           </div>
-          <Divider className="pt-2" />
+          <Divider className="py-8" />
           <p className="px-4 py-2 text-lg font-semibold">{video.youtube.title}</p>
           <p className="px-4 py-2 text-md font-medium">{video.youtube.description.substring(0, 100) + "..."}</p>
         </div>
@@ -175,8 +184,8 @@ export default function Suggestions({ url }: { url: string }) {
                         recomendacion.profesor ? recomendacion.profesor : "Profesor desconocido"
                       }</p>
                       <p className="text-md font-medium truncate">{recomendacion.titulo}</p>
-                      <div className="flex flex-row gap-2 py-2 w-full overflow-hidden flex-wrap">
-                        <p className="text-sm p-2 border-2 border-slate-700 rounded-lg">{recomendacion.estilo}</p>
+                      <div className="flex flex-row gap-2 py-2 w-full overflow-hidden flex-wrap items-center">
+                        <p className={`text-sm font-bold p-2 rounded-lg uppercase ${estilos[recomendacion.estilo]}`}>{recomendacion.estilo}</p>
                         <p className="text-sm p-2 border-2 border-slate-700 rounded-lg">{recomendacion.canal}</p>
                       </div>
                       <div className="flex flex-row gap-2 py-2 w-full overflow-hidden flex-wrap items-center">
