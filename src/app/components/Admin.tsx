@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { useFirebaseAuth } from "../context/Context";
 import { signInAnonymously } from "firebase/auth";
-import { addVideo, createNewUser, deleteAllVideos, deleteUser, getUser } from "../services/prismaService";
-import { User } from "../models/user";
+import { addVideo, createNewUser, deleteAllVideos, deleteUser, getUser, PrismaUser } from "../services/prismaService";
 import { Button } from "@mui/material";
 
 export default function Admin() {
   const auth = useFirebaseAuth();
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<PrismaUser | null>(null);
 
   useEffect(() => {
     async function signIn() {

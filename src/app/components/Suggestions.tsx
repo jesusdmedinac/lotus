@@ -31,7 +31,13 @@ export default function Suggestions({ url }: { url: string }) {
         clase: data.clase,
         estilo: data.estilo,
         parrafos: {
-          create: data.parrafos
+          create: data.parrafos.map((parrafo) => ({
+            parrafo: parrafo.parrafo,
+            inicio: `${parrafo.inicio}`,
+            fin: `${parrafo.fin}`,
+            tiempo: parrafo.tiempo,
+            estilo: parrafo.estilo
+          }))
         },
         youtube: {
           create: data.youtube
@@ -101,15 +107,15 @@ export default function Suggestions({ url }: { url: string }) {
   return (
     <div className="flex flex-col w-full overflow-y-scroll">
       <div className="flex flex-row w-full p-16 justify-center">
-        <div className="flex flex-row justify-center items-center w-full rounded-xl">
-          <YouTubeComponent
-            id={video.youtube.id}
-            handlePlay={() => console.log("play")}
-            handlePause={() => console.log("pause")}
-            className="w-full aspect-video border-none z-0"
-          />
-        </div>
         <div className="flex flex-col rounded-xl p-4">
+          <div className="flex flex-row justify-center items-center w-full rounded-xl">
+            <YouTubeComponent
+              id={video.youtube.id}
+              handlePlay={() => console.log("play")}
+              handlePause={() => console.log("pause")}
+              className="w-full aspect-video border-none z-0"
+            />
+          </div>
           <p className="px-4 py-2 text-lg font-semibold">{video.materia}</p>
           <div className="flex flex-row gap-2">
             <p className="px-4 py-2 text-md font-medium rounded-lg border-2 border-slate-700">{video.clase}</p>
