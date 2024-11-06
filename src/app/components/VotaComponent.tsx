@@ -11,14 +11,14 @@ export default function VotaComponent({ className }: { className?: string }) {
     <Button className={className} variant="contained" color="primary" onClick={onVotaClick}>
       <Box sx={{ width: 'auto' }}>
         <Collapse orientation="horizontal" in={collapsed} collapsedSize={24} onMouseOver={() => {setCollapsed(true)}} onMouseLeave={() => {setCollapsed(false)}}>
-          <div className="flex flex-row items-center gap-2 text-black font-bold">
+          <div className="flex flex-row items-center gap-2 text-white font-bold">
             <Image
-              src="/lotus-black.svg"
+              src="/lotus.svg"
               alt="Logo Lotus"
               width={24}
               height={24}
               />
-            <p className="overflow-hidden whitespace-nowrap">Compartir feedback</p>
+            <p className="overflow-hidden whitespace-nowrap">Vota por Lotus</p>
           </div>
         </Collapse>
       </Box>
