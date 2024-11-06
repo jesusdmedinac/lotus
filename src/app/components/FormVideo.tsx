@@ -38,10 +38,18 @@ export default function FormVideo() {
     window.open(`/home?url=${urlValue}`, "_self");
   };
 
+  const isEmpty = urlValue === "";
   return (
     <div className="flex flex-col gap-4 w-full">
-      <TextField id="url-input" label="Comparte tu clase de Youtube favorita" variant="outlined" onChange={onUrlChange} error={!isValidUrl || isVideoDurationLong || isVideoDurationShort} helperText={
-        !isValidUrl 
+      <TextField id="url-input" label="Comparte tu clase de Youtube favorita" variant="outlined" onChange={onUrlChange} error={
+        isEmpty
+        ? false
+        : !isValidUrl || 
+        isVideoDurationLong || 
+        isVideoDurationShort
+      } helperText={
+        !isEmpty 
+        ? !isValidUrl 
         ? 
           `El URL no es válido, intenta con un url que empiece por:
           "${youtubeStart}",
@@ -53,8 +61,12 @@ export default function FormVideo() {
         : isVideoDurationShort
         ? 'El video dura menos de 1 segundo, intenta con un video más largo 🙏'
         : ''
+        : ''
       }/>
-      <Button onClick={onSendClick} disabled={!isValidUrl}>Enviar</Button>
+      <Button onClick={onSendClick} disabled={
+        isEmpty || 
+        !isValidUrl
+      }>Enviar</Button>
     </div>
   );
 }
