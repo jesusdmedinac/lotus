@@ -12,6 +12,7 @@ import { ThemeProvider } from "@emotion/react";
 import { createTheme, CssBaseline } from "@mui/material";
 import { green, pink } from "@mui/material/colors";
 import LoadingComponent from "@/app/components/LoadingComponent";
+import VotaComponent from "../components/VotaComponent";
 
 export default function App({ children }: { children: React.ReactNode }) {
   const [app, setApp] = useState<FirebaseApp | null>(null);
@@ -50,6 +51,7 @@ export default function App({ children }: { children: React.ReactNode }) {
             }
           })}>
             <CssBaseline />
+            <VotaComponent className="fixed top-2 start-2" />
             {children}
           </ThemeProvider>
         </FirebaseAuthContext.Provider>

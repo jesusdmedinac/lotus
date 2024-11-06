@@ -1,7 +1,6 @@
 'use client';
 
 import { Button, TextField } from "@mui/material";
-import { redirect } from "next/navigation";
 import React, { useState } from "react";
 import fetchVideoDuration from "../services/youtubeService";
 
@@ -37,7 +36,7 @@ export default function FormVideo() {
     const duration = await validateVideoDuration();
     console.log(!isValidUrl || duration.seconds > 120 || duration.seconds < 1);
     if (!isValidUrl || duration.seconds > 120 || duration.seconds < 1) return;
-    redirect(`/home?url=${urlValue}`);
+    window.open(`/home?url=${urlValue}`, "_self");
   };
 
   return (
