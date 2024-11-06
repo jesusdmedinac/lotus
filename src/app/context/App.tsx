@@ -9,12 +9,12 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
 import { ThemeProvider } from "@emotion/react";
-import { createTheme, useColorScheme } from "@mui/material";
+import { createTheme, CssBaseline } from "@mui/material";
 import { green, pink } from "@mui/material/colors";
 import LoadingComponent from "@/app/components/LoadingComponent";
+import VotaComponent from "../components/VotaComponent";
 
 export default function App({ children }: { children: React.ReactNode }) {
-  const { systemMode } = useColorScheme();
   const [app, setApp] = useState<FirebaseApp | null>(null);
   const [analytics, setAnalytics] = useState<Analytics | null>(null);
   const [auth, setAuth] = useState<Auth | null>(null);
@@ -37,7 +37,7 @@ export default function App({ children }: { children: React.ReactNode }) {
     setAuth(auth);
   }, []);
 
-  if (!app || !analytics || !auth) return <LoadingComponent />;
+  if (!app || !analytics || !auth) return <LoadingComponent message="" />;
   return (
     <FirebaseAppContext.Provider value={app}>
       <FirebaseAnalyticsContext.Provider value={analytics}>
@@ -47,9 +47,11 @@ export default function App({ children }: { children: React.ReactNode }) {
             palette: {
               primary: green,
               secondary: pink,
-              mode: systemMode === "dark" ? "light" : "dark"
+              mode: "dark"
             }
           })}>
+            <CssBaseline />
+            <VotaComponent className="fixed top-2 start-2" />
             {children}
           </ThemeProvider>
         </FirebaseAuthContext.Provider>

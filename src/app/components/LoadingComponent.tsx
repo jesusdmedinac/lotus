@@ -2,7 +2,7 @@
 
 import LottieComponent from "@/app/components/LottieComponent";
 
-export default function LoadingComponent() {
+export default function LoadingComponent({ message }: { message: string | undefined }) {
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -16,6 +16,11 @@ export default function LoadingComponent() {
         defaultOptions={defaultOptions}
         animation="gen-ai"
         className="w-full h-full" />
+      <p>{(
+        message ? 
+        message.charAt(0).toUpperCase() + message.slice(1)
+        : ""
+      )}</p>
     </div>
   );
 }

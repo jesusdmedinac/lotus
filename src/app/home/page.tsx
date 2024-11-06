@@ -9,7 +9,7 @@ import LoadingComponent from "@/app/components/LoadingComponent";
 function Search() {
   const searchParams = useSearchParams();
   const videoURL = searchParams.get("url");
-  if (!videoURL) return <LoadingComponent />;
+  if (!videoURL) return <LoadingComponent message="" />;
   return <Suggestions url={videoURL} />;
 }
 
@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <App>
       <div className="flex flex-col w-full justify-center">
-        <Suspense fallback={<LoadingComponent />}>
+        <Suspense fallback={<LoadingComponent message="" />}>
           <Search />
         </Suspense>
       </div>
