@@ -39,13 +39,33 @@ async function getVideoDuration(videoId: string): Promise<Duration> {
   return durationObject;
 }
 
+const youtubeStart = 'https://www.youtube.com/watch?v=';
+const youtubeShorts = 'https://www.youtube.com/shorts/';
+
 export async function GET(request: Request) {
   const requestUrl = new URL(request.url);
   const url = requestUrl.searchParams.get('url');
-  if (!url) return Response.json({ message: "El url del video no es válido "});
-  const { searchParams } = new URL(url);
-  const youtubeId = searchParams.get('v');
-  if (!youtubeId) return Response.json({ message: "El id del video no es válido " });
+  if (!url) return Response.json({
+    url,
+    duration: {
+      duration: "0",
+      seconds: 0
+    }
+  });
+  const urlObject = new URL(url);
+  const youtubeId = url.startsWith(youtubeStart)
+  ? urlObject.searchParams.get("v")
+  : url.startsWith(youtubeShorts)
+  ? urlObject.pathname.split('/')[2]
+  : null;
+
+  if (!youtubeId) return Response.json({
+    url,
+    duration: {
+      duration: "0",
+      seconds: 0
+    }
+  });
   const duration = await getVideoDuration(youtubeId);
   const durationResponse: DurationResponse = {
     url,

@@ -40,6 +40,7 @@ export default function Suggestions({ url }: { url: string }) {
   useEffect(() => {
     async function loadSuggestions() {
       if (!video) return;
+      if (!video.descargado) return;
       const lambda3Response = await fetchLambda3(
         video.estilo.split(',')[0],
         video.clase
