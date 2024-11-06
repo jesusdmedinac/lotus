@@ -1,8 +1,15 @@
 function iso8601ToSeconds(isoString: string) {
-  const date = new Date(isoString);
-  const milliseconds = date.getTime();
-  const seconds = Math.floor(milliseconds / 1000);
-  return seconds;
+  const regex = /P(?:([\d.]+)D)?(?:T(?:([\d.]+)H)?(?:([\d.]+)M)?(?:([\d.]+)S)?)?/;
+  const match = isoString.match(regex);
+  
+  if (!match) return null;
+
+  const days = parseFloat(match[1]) || 0;
+  const hours = parseFloat(match[2]) || 0;
+  const minutes = parseFloat(match[3]) || 0;
+  const seconds = parseFloat(match[4]) || 0;
+
+  return days * 86400 + hours * 3600 + minutes * 60 + seconds;
 }
 
 async function getVideoDuration(videoId: string) {
@@ -18,9 +25,7 @@ async function getVideoDuration(videoId: string) {
   const durationObject = {
     duration,
     seconds
-  }
-  console.log(durationObject);
-  
+  }  
   return durationObject;
 }
 
@@ -31,8 +36,7 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(url);
   const youtubeId = searchParams.get('v');
   if (!youtubeId) return Response.json({ message: "El id del video no es válido " });
-  const duration = getVideoDuration(youtubeId);
-  console.log(duration);
+  const duration = await getVideoDuration(youtubeId);
   return Response.json({
     url,
     duration
