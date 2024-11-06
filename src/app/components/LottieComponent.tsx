@@ -31,8 +31,8 @@ export default function LottieComponent({
     <div className={className}>
       <Lottie 
       options={options}
-      height={96}
-      width={96}
+      width={256}
+      height={256}
       />
     </div>
   )
