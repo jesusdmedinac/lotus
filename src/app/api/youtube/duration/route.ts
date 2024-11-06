@@ -1,3 +1,5 @@
+import { youtubeMobile, youtubeShorts, youtubeStart } from "@/app/constants";
+
 function iso8601ToSeconds(isoString: string): number {
   const regex = /P(?:([\d.]+)D)?(?:T(?:([\d.]+)H)?(?:([\d.]+)M)?(?:([\d.]+)S)?)?/;
   const match = isoString.match(regex);
@@ -39,9 +41,6 @@ async function getVideoDuration(videoId: string): Promise<Duration> {
   return durationObject;
 }
 
-const youtubeStart = 'https://www.youtube.com/watch?v=';
-const youtubeShorts = 'https://www.youtube.com/shorts/';
-
 export async function GET(request: Request) {
   const requestUrl = new URL(request.url);
   const url = requestUrl.searchParams.get('url');
@@ -54,6 +53,8 @@ export async function GET(request: Request) {
   });
   const urlObject = new URL(url);
   const youtubeId = url.startsWith(youtubeStart)
+  ? urlObject.searchParams.get("v")
+  : url.startsWith(youtubeMobile)
   ? urlObject.searchParams.get("v")
   : url.startsWith(youtubeShorts)
   ? urlObject.pathname.split('/')[2]
