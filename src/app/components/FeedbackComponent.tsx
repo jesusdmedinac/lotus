@@ -4,11 +4,11 @@ import { useState } from "react";
 
 export default function FeedbackComponent({ className }: { className?: string }) {
   const [collapsed, setCollapsed] = useState(false);
-  const onVotaClick = () => {
+  const onFeedbackClick = () => {
     window.open("https://calendly.com/jesusdmedinac/lotus-internal-testing", "_blank");
   }
   return (
-    <Button className={className} variant="contained" color="info" onClick={onVotaClick}>
+    <Button className={className} variant="contained" color="info" onClick={onFeedbackClick}>
       <Box sx={{ width: 'auto' }}>
         <Collapse orientation="horizontal" in={collapsed} collapsedSize={24} onMouseOver={() => {setCollapsed(true)}} onMouseLeave={() => {setCollapsed(false)}}>
           <div className="flex flex-row items-center gap-2 text-black font-bold">
