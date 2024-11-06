@@ -1,8 +1,8 @@
-function iso8601ToSeconds(isoString: string) {
+function iso8601ToSeconds(isoString: string): number {
   const regex = /P(?:([\d.]+)D)?(?:T(?:([\d.]+)H)?(?:([\d.]+)M)?(?:([\d.]+)S)?)?/;
   const match = isoString.match(regex);
   
-  if (!match) return null;
+  if (!match) return 0;
 
   const days = parseFloat(match[1]) || 0;
   const hours = parseFloat(match[2]) || 0;
@@ -12,7 +12,17 @@ function iso8601ToSeconds(isoString: string) {
   return days * 86400 + hours * 3600 + minutes * 60 + seconds;
 }
 
-async function getVideoDuration(videoId: string) {
+export interface Duration {
+  duration: string
+  seconds: number
+}
+
+export interface DurationResponse {
+  url: string
+  duration: Duration
+}
+
+async function getVideoDuration(videoId: string): Promise<Duration> {
   const apiKey = process.env.YOUTUBE_API_KEY;
   const url = `https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=${videoId}&key=${apiKey}`;
   const response = await fetch(url, {
@@ -22,10 +32,10 @@ async function getVideoDuration(videoId: string) {
   const contentDetails = responseAsJSON.items[0].contentDetails;
   const duration = contentDetails.duration;
   const seconds = iso8601ToSeconds(duration);
-  const durationObject = {
+  const durationObject: Duration = {
     duration,
     seconds
-  }  
+  }
   return durationObject;
 }
 
@@ -37,8 +47,9 @@ export async function GET(request: Request) {
   const youtubeId = searchParams.get('v');
   if (!youtubeId) return Response.json({ message: "El id del video no es válido " });
   const duration = await getVideoDuration(youtubeId);
-  return Response.json({
+  const durationResponse: DurationResponse = {
     url,
     duration
-  })
+  }
+  return Response.json(durationResponse)
 }
