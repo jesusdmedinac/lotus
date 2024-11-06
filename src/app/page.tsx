@@ -20,6 +20,7 @@ export default function Home() {
             defaultOptions={defaultOptions}
             animation="teacher"
             className="w-full" />
+          <p className="flex flex-row w-full text-2xl items-center justify-center py-8">Por la alta demanda, sólo aceptamos videos menores a 2 minutos 🙏</p>
           <FormVideo />
         </main>
       </div>

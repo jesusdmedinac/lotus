@@ -6,18 +6,22 @@ function iso8601ToSeconds(isoString: string) {
 }
 
 async function getVideoDuration(videoId: string) {
-  const apiKey = 'AIzaSyD6ttVj3WKzyky7FT1ftNdoRGxJ9s94QBE';
+  const apiKey = process.env.YOUTUBE_API_KEY;
   const url = `https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=${videoId}&key=${apiKey}`;
   const response = await fetch(url, {
     method: "GET"
   });
   const responseAsJSON = await response.json();
-  const duration = responseAsJSON.items[0].contentDetails.duration;
+  const contentDetails = responseAsJSON.items[0].contentDetails;
+  const duration = contentDetails.duration;
   const seconds = iso8601ToSeconds(duration);
-  return {
+  const durationObject = {
     duration,
     seconds
   }
+  console.log(durationObject);
+  
+  return durationObject;
 }
 
 export async function GET(request: Request) {
@@ -28,6 +32,7 @@ export async function GET(request: Request) {
   const youtubeId = searchParams.get('v');
   if (!youtubeId) return Response.json({ message: "El id del video no es válido " });
   const duration = getVideoDuration(youtubeId);
+  console.log(duration);
   return Response.json({
     url,
     duration
