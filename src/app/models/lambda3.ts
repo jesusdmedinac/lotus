@@ -20,4 +20,5 @@ export interface Recomendacion {
   titulo: string
   estilo: string
   duracion: string
+  id: string
 }

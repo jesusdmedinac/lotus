@@ -7,10 +7,20 @@ import { Lambda1Response, Video } from "@/app/models/lambda1";
 import { Box, Divider, Tab, Tabs } from "@mui/material";
 import TimerIcon from '@mui/icons-material/Timer';
 import CodeIcon from '@mui/icons-material/Code';
-import { Lambda3Data } from "../models/lambda3";
+import { Lambda3Data, Recomendacion } from "../models/lambda3";
 import YouTubeComponent from "./youtube";
 import LoadingComponent from "@/app/components/LoadingComponent";
 import SuggestedContent from "./SuggestedContent";
+import Image from "next/image";
+
+const estilos: {
+  [key: string]: string
+} = {
+  "teorico": "bg-pink-500",
+  "activo": "bg-green-500",
+  "pragmatico": "bg-sky-500",
+  "reflexivo": "bg-violet-500"
+}
 
 export default function Suggestions({ url }: { url: string }) {
   const auth = useFirebaseAuth();
@@ -67,14 +77,6 @@ export default function Suggestions({ url }: { url: string }) {
     ...parecidas
   ];
   const estilo = video.estilo.split(',')[0] as string;
-  const estilos: {
-    [key: string]: string
-  } = {
-    "teorico": "bg-pink-500",
-    "activo": "bg-green-500",
-    "pragmatico": "bg-sky-500",
-    "reflexivo": "bg-violet-500"
-  }
   
   return (
     <div className="flex flex-col w-full overflow-y-scroll">
@@ -132,24 +134,7 @@ export default function Suggestions({ url }: { url: string }) {
                 <div></div>
                 {
                   todas.map((recomendacion, index) => (
-                    <div key={index} className="flex flex-col w-[480px] h-[270px] p-4 rounded-xl bg-slate-800 aspect-video">
-                      <p className="text-xl font-semibold truncate">{
-                        recomendacion.profesor ? recomendacion.profesor : "Profesor desconocido"
-                      }</p>
-                      <p className="text-md font-medium truncate">{recomendacion.titulo}</p>
-                      <div className="flex flex-row gap-2 py-2 w-full overflow-hidden flex-wrap items-center">
-                        <p className={`text-sm font-bold p-2 rounded-lg uppercase ${estilos[recomendacion.estilo]}`}>{recomendacion.estilo}</p>
-                        <p className="text-sm p-2 border-2 border-slate-700 rounded-lg">{recomendacion.canal}</p>
-                      </div>
-                      <div className="flex flex-row gap-2 py-2 w-full overflow-hidden flex-wrap items-center">
-                        <CodeIcon className="rounded-full bg-slate-500 p-1 size-8" />
-                        <p className="text-sm p-2 text-cyan-500 rounded-lg">{recomendacion.clase}</p>
-                      </div>
-                      <div className="flex flex-row gap-2 py-2 w-full overflow-hidden flex-wrap items-center">
-                        <TimerIcon className="rounded-full bg-slate-500 p-1 size-8" />
-                        <p className="text-sm p-2 text-cyan-500 rounded-lg">{recomendacion.duracion}</p>
-                      </div>
-                    </div>
+                    <Recomendation key={index} recomendacion={recomendacion} />
                   ))
                 }
                 <div></div>
@@ -187,6 +172,42 @@ function CustomTabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && <Box sx={{ p: 0 }}>{children}</Box>}
+    </div>
+  );
+}
+
+function Recomendation({ recomendacion }: { recomendacion: Recomendacion }) {
+  const onRecomendacionClick = () => {
+    window.open("https://www.youtube.com/watch?v=" + recomendacion.id, "_blank");
+  }
+  const youtubeThumbnail = `http://i3.ytimg.com/vi/${recomendacion.id}/hqdefault.jpg`
+  return (
+    <div className="flex flex-col min-w-[480px] h-auto rounded-xl bg-slate-800 aspect-video cursor-pointer" onClick={onRecomendacionClick}>
+      <Image
+        src={youtubeThumbnail}
+        alt="Youtube Thumbnail"
+        width={480}
+        height={270}
+        className="rounded-xl"
+        />
+      <div className="flex flex-col p-4 ">
+        <p className="text-xl font-semibold truncate">{
+          recomendacion.profesor ? recomendacion.profesor : "Profesor desconocido"
+        }</p>
+        <p className="text-md font-medium truncate">{recomendacion.titulo}</p>
+        <div className="flex flex-row gap-2 py-2 w-full overflow-hidden flex-wrap items-center">
+          <p className={`text-sm font-bold p-2 rounded-lg uppercase ${estilos[recomendacion.estilo]}`}>{recomendacion.estilo}</p>
+          <p className="text-sm p-2 border-2 border-slate-700 rounded-lg">{recomendacion.canal}</p>
+        </div>
+        <div className="flex flex-row gap-2 py-2 w-full overflow-hidden flex-wrap items-center">
+          <CodeIcon className="rounded-full bg-slate-500 p-1 size-8" />
+          <p className="text-sm p-2 text-cyan-500 rounded-lg">{recomendacion.clase}</p>
+        </div>
+        <div className="flex flex-row gap-2 py-2 w-full overflow-hidden flex-wrap items-center">
+          <TimerIcon className="rounded-full bg-slate-500 p-1 size-8" />
+          <p className="text-sm p-2 text-cyan-500 rounded-lg">{recomendacion.duracion}</p>
+        </div>
+      </div>
     </div>
   );
 }
