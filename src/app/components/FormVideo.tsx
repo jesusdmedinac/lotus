@@ -3,9 +3,7 @@
 import { Button, TextField } from "@mui/material";
 import React, { useState } from "react";
 import fetchVideoDuration from "../services/youtubeService";
-
-const youtubeStart = 'https://www.youtube.com/watch?v=';
-const youtubeShorts = 'https://www.youtube.com/shorts/';
+import { youtubeMobile, youtubeShorts, youtubeStart } from "../constants";
 
 export default function FormVideo() {
   const [urlValue, setUrlValue] = useState("");
@@ -28,6 +26,7 @@ export default function FormVideo() {
     setIsValidUrl(
       newValue !== "" && 
       newValue.startsWith(youtubeStart) && newValue.length > youtubeStart.length || 
+      newValue.startsWith(youtubeMobile) && newValue.length > youtubeMobile.length || 
       newValue.startsWith(youtubeShorts) && newValue.length > youtubeShorts.length
     );
   };
@@ -43,7 +42,12 @@ export default function FormVideo() {
     <div className="flex flex-col gap-4 w-full">
       <TextField id="url-input" label="Comparte tu clase de Youtube favorita" variant="outlined" onChange={onUrlChange} error={!isValidUrl || isVideoDurationLong || isVideoDurationShort} helperText={
         !isValidUrl 
-        ? 'El URL no es válido' 
+        ? 
+          `El URL no es válido, intenta con un url que empiece por:
+          "${youtubeStart}",
+          "${youtubeMobile}" o
+          "${youtubeShorts}"
+        `
         : isVideoDurationLong
         ? 'El video dura más de 2 minutos, intenta con un video más corto 🙏'
         : isVideoDurationShort
