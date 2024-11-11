@@ -1,27 +1,28 @@
-import { Box, Button, Collapse } from "@mui/material";
+'use client';
+
+import { Button } from "@mui/material";
 import Image from "next/image";
-import { useState } from "react";
+import { logEvent } from "firebase/analytics";
+import { useFirebaseAnalytics } from "@/app/context/Context";
 
 export default function VotaComponent({ className }: { className?: string }) {
-  const [collapsed, setCollapsed] = useState(false);
+  const analytics = useFirebaseAnalytics();
   const onVotaClick = () => {
-    window.open("https://platzi.com/vota", "_blank");
+    window.open("https://api.whatsapp.com/send?phone=14153419905&text=Quiero%20votar%20por%20Lotus", "_blank");
+    if (!analytics) return;
+    logEvent(analytics, "user_voted");
   }
   return (
     <Button className={className} variant="contained" color="primary" onClick={onVotaClick}>
-      <Box sx={{ width: 'auto' }}>
-        <Collapse orientation="horizontal" in={collapsed} collapsedSize={24} onMouseOver={() => {setCollapsed(true)}} onMouseLeave={() => {setCollapsed(false)}}>
-          <div className="flex flex-row items-center gap-2 text-white font-bold">
-            <Image
-              src="/lotus.svg"
-              alt="Logo Lotus"
-              width={24}
-              height={24}
-              />
-            <p className="overflow-hidden whitespace-nowrap">Vota por Lotus</p>
-          </div>
-        </Collapse>
-      </Box>
+      <div className="flex flex-row items-center gap-2 text-white font-bold text-2xl">
+        <Image
+          src="/lotus.svg"
+          alt="Logo Lotus"
+          width={48}
+          height={48}
+          />
+        <p className="overflow-hidden whitespace-nowrap">Vota por Lotus</p>
+      </div>
     </Button>
   );
 }
